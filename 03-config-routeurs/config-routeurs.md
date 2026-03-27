@@ -43,9 +43,9 @@ R1(config-if)# clock rate 64000
 R1(config-if)# no shutdown
 R1(config-if)# exit
 
-> **configuration de chaque interface des routeurs dans la même logique.**
 
 ```
+> **configuration de chaque interface des routeurs dans la même logique.**
 
 ### DHCP — LAN1 Paris (500 équipements)
 
