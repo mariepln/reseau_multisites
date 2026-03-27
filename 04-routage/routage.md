@@ -36,6 +36,9 @@ R1(config)# ip route 192.168.2.0 255.255.255.192 192.168.3.10
 R1(config)# ip route 192.168.2.64 255.255.255.192 192.168.3.10
 R1# write memory
 ```
+> Chaque interface des routeurs est configurée de cette manière.
+> Table de routage + commandes
+
 ---
 
 ## Vérification
