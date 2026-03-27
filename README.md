@@ -53,11 +53,9 @@ Concevoir et configurer un réseau d’entreprise multi-sites comprenant :
 |---|---|
 | `01-reseau-physique/` | Topologie, équipements, câblage |
 | `02-plan-adressage/` | Subnetting et plan IP complet |
-| `03-config-terminaux/` | Configuration des PCs |
-| `04-config-routeurs/` | Configurations R1 à R6|
-| `05-routage-statique/` | Tables de routage statique |
-| `06-tests-connectivite/` | Rapport de tests |
-| `fichier-pt/` | Fichier Packet Tracer (.pkt) |
+| `03-config-routeurs/` | Configurations R1 à R6|
+| `04-routage-statique/` | Tables de routage statique |
+| `05-tests-connectivite/` | Rapport de tests |
 
 ---
 
