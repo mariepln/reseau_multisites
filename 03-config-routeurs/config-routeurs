@@ -1,7 +1,7 @@
-# ⚙️ Configuration des Routeurs
+# Configuration des Routeurs
 
 > Accès initial via **câble console** (PC → port console du routeur) pour la première configuration.  
-> Accès distant sécurisé via **SSH** une fois la configuration réseau en place.
+> Accès distant sécurisé via **SSH** pour LAN1 une fois la configuration réseau en place.
 
 ---
 
@@ -42,23 +42,27 @@ R1(config-if)# ip address 192.168.3.9 255.255.255.252
 R1(config-if)# clock rate 64000
 R1(config-if)# no shutdown
 R1(config-if)# exit
+
+> **configuration de chaque interface des routeurs dans la même logique.**
+
 ```
 
-### DHCP — LAN Paris (500 équipements)
+### DHCP — LAN1 Paris (500 équipements)
 
 ```cisco
-! Exclusion des adresses réservées (passerelle + équipements fixes)
-R1(config)# ip dhcp excluded-address 192.168.1.250 192.168.1.254
 
-! Pool DHCP pour le LAN Paris
+! Pool DHCP pour le LAN1 Paris
 R1(config)# ip dhcp pool lan1-Paris
 R1(dhcp-config)# network 192.168.0.0 255.255.254.0
 R1(dhcp-config)# default-router 192.168.1.254
 R1(dhcp-config)# dns-server 8.8.8.8
 R1(dhcp-config)# exit
+
+! Exclusion des adresses réservées (passerelle + équipements fixes)
+R1(config)# ip dhcp excluded-address 192.168.1.250 192.168.1.254
 ```
 
-> ℹ️ Les adresses 192.168.1.250 à 192.168.1.254 sont réservées aux équipements réseau (routeur, switches, serveurs) et exclues du pool DHCP.
+> Les adresses 192.168.1.250 à 192.168.1.254 sont réservées aux équipements réseau (routeur, switches, serveurs) et exclues du pool DHCP.
 
 ### SSH — Accès distant sécurisé
 
@@ -86,122 +90,17 @@ R1(config-line)# login local
 R1(config-line)# exit
 
 R1# write memory
+
 ```
 
 > ⚠️ En environnement de production, utiliser des mots de passe complexes et différents pour `username` et `enable secret`.
-
----
-
-## R2 — Nantes
-
-```cisco
-Router(config)# hostname R2
-
-R2(config)# interface fa0/0
-R2(config-if)# ip address 192.168.2.190 255.255.255.192
-R2(config-if)# no shutdown
-R2(config-if)# exit
-
-R2(config)# interface se2/0
-R2(config-if)# ip address 192.168.3.2 255.255.255.252
-R2(config-if)# no shutdown
-R2(config-if)# exit
-
-R2# write memory
-```
-
----
-
-## R3 — Strasbourg
-
-```cisco
-Router(config)# hostname R3
-
-R3(config)# interface fa0/0
-R3(config-if)# ip address 192.168.2.254 255.255.255.192
-R3(config-if)# no shutdown
-R3(config-if)# exit
-
-R3(config)# interface se2/0
-R3(config-if)# ip address 192.168.3.6 255.255.255.252
-R3(config-if)# no shutdown
-R3(config-if)# exit
-
-R3# write memory
-```
-
----
-
-## R4 — Marseille
-
-```cisco
-Router(config)# hostname R4
-
-R4(config)# interface fa0/0
-R4(config-if)# ip address 192.168.2.62 255.255.255.192
-R4(config-if)# no shutdown
-R4(config-if)# exit
-
-R4(config)# interface se2/0
-R4(config-if)# ip address 192.168.3.10 255.255.255.252
-R4(config-if)# no shutdown
-R4(config-if)# exit
-
-R4(config)# interface se3/0
-R4(config-if)# ip address 192.168.3.13 255.255.255.252
-R4(config-if)# clock rate 64000
-R4(config-if)# no shutdown
-R4(config-if)# exit
-
-R4# write memory
-```
-
----
-
-## R5 — Routeur WAN intermédiaire
-
-```cisco
-Router(config)# hostname R5
-
-R5(config)# interface se2/0
-R5(config-if)# ip address 192.168.3.14 255.255.255.252
-R5(config-if)# no shutdown
-R5(config-if)# exit
-
-R5(config)# interface se3/0
-R5(config-if)# ip address 192.168.3.17 255.255.255.252
-R5(config-if)# clock rate 64000
-R5(config-if)# no shutdown
-R5(config-if)# exit
-
-R5# write memory
-```
-
----
-
-## R6 — Toulouse
-
-```cisco
-Router(config)# hostname R6
-
-R6(config)# interface fa0/0
-R6(config-if)# ip address 192.168.2.126 255.255.255.192
-R6(config-if)# no shutdown
-R6(config-if)# exit
-
-R6(config)# interface se2/0
-R6(config-if)# ip address 192.168.3.18 255.255.255.252
-R6(config-if)# no shutdown
-R6(config-if)# exit
-
-R6# write memory
-```
+> Tous les équipements réseau (routeurs + switchs) sont administrables via SSH pour garantir un accès sécurisé distant”
 
 ---
 
 ## Vérification des interfaces
 
-Après configuration, vérifier sur chaque routeur :
+Après configuration, vérification sur chaque routeur :
 
 ```cisco
 Router# show ip interface brief
