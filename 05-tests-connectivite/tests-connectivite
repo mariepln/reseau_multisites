@@ -1,4 +1,4 @@
-# 🧪 Tests de Connectivité — NetCorp
+# Tests de Connectivité
 
 ## Méthodologie
 
@@ -6,20 +6,6 @@ Les tests sont effectués depuis chaque PC vers tous les autres PCs du réseau a
 
 - **ping** — vérifie que la destination est joignable
 - **tracert** — affiche le chemin emprunté par les paquets (utile pour valider le routage)
-
----
-
-## Matrice de connectivité
-
-| Source | Destination | IP destination | Résultat |
-|---|---|---|---|
-| PC5 (Toulouse) | PC4 (Marseille) | 192.168.2.1 | ✅ OK |
-| PC5 (Toulouse) | PC1 (Paris) | 192.168.0.x | ✅ OK |
-| PC5 (Toulouse) | PC2 (Nantes) | 192.168.2.129 | ✅ OK |
-| PC5 (Toulouse) | PC3 (Strasbourg) | 192.168.2.193 | ✅ OK |
-| PC4 (Marseille) | PC1 (Paris) | 192.168.0.x | ✅ OK |
-| PC1 (Paris) | PC2 (Nantes) | 192.168.2.129 | ✅ OK |
-| PC1 (Paris) | PC3 (Strasbourg) | 192.168.2.193 | ✅ OK |
 
 ---
 
@@ -43,7 +29,7 @@ Ping statistics for 192.168.2.1:
     Minimum = 2ms, Maximum = 40ms, Average = 15ms
 ```
 
-✅ **0% de perte** — connectivité totale confirmée.
+**0% de perte** — connectivité totale confirmée.
 
 ### Tracert
 
