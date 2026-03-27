@@ -1,4 +1,4 @@
-# 📋 Plan d'adressage — NetCorp
+# Plan d'adressage
 
 ## Plage IP globale
 
@@ -9,7 +9,7 @@
 | Nombre d'adresses | 2048 |
 | Méthode | VLSM (Variable Length Subnet Mask) |
 
-> ℹ️ Le VLSM permet d'allouer des sous-réseaux de taille adaptée à chaque besoin, évitant le gaspillage d'adresses IP.
+> Le VLSM permet d'allouer des sous-réseaux de taille adaptée à chaque besoin, évitant le gaspillage d'adresses IP.
 
 ---
 
@@ -30,7 +30,7 @@ Les sous-réseaux sont alloués du plus grand au plus petit (bonne pratique VLSM
 | R4–R5 | WAN | 2 | /30 | 192.168.3.12 | 192.168.3.15 | 192.168.3.13 → 192.168.3.14 |
 | R5–R6 | WAN | 2 | /30 | 192.168.3.16 | 192.168.3.19 | 192.168.3.17 → 192.168.3.18 |
 
-> ℹ️ Les liens point à point WAN utilisent des /30 : seulement 2 adresses hôtes nécessaires, évite tout gaspillage.
+> Les liens point à point WAN utilisent des /30 : seulement 2 adresses hôtes nécessaires, évite tout gaspillage.
 
 ---
 
@@ -40,7 +40,7 @@ Les sous-réseaux sont alloués du plus grand au plus petit (bonne pratique VLSM
 
 | Interface | Type | IP | Masque | Connecté à |
 |---|---|---|---|---|
-| Fa0/0 | LAN | 192.168.1.254 | /23 | Switch S1 (LAN Paris) |
+| Fa0/0 | LAN | 192.168.1.254 | /23 | Switch S0 (LAN Paris) |
 | Se2/0 | WAN | 192.168.3.1 | /30 | R2 (Nantes) |
 | Se3/0 | WAN | 192.168.3.5 | /30 | R3 (Strasbourg) |
 | Se6/0 | WAN | 192.168.3.9 | /30 | R4 (Marseille) |
@@ -49,21 +49,21 @@ Les sous-réseaux sont alloués du plus grand au plus petit (bonne pratique VLSM
 
 | Interface | Type | IP | Masque | Connecté à |
 |---|---|---|---|---|
-| Fa0/0 | LAN | 192.168.2.190 | /26 | Switch S2 (LAN Nantes) |
+| Fa0/0 | LAN | 192.168.2.190 | /26 | Switch S1 (LAN Nantes) |
 | Se2/0 | WAN | 192.168.3.2 | /30 | R1 (Paris) |
 
 ### R3 — Strasbourg
 
 | Interface | Type | IP | Masque | Connecté à |
 |---|---|---|---|---|
-| Fa0/0 | LAN | 192.168.2.254 | /26 | Switch S3 (LAN Strasbourg) |
+| Fa0/0 | LAN | 192.168.2.254 | /26 | Switch S2 (LAN Strasbourg) |
 | Se2/0 | WAN | 192.168.3.6 | /30 | R1 (Paris) |
 
 ### R4 — Marseille
 
 | Interface | Type | IP | Masque | Connecté à |
 |---|---|---|---|---|
-| Fa0/0 | LAN | 192.168.2.62 | /26 | Switch S4 (LAN Marseille) |
+| Fa0/0 | LAN | 192.168.2.62 | /26 | Switch S3 (LAN Marseille) |
 | Se2/0 | WAN | 192.168.3.10 | /30 | R1 (Paris) |
 | Se3/0 | WAN | 192.168.3.13 | /30 | R5 (WAN) |
 
@@ -78,7 +78,7 @@ Les sous-réseaux sont alloués du plus grand au plus petit (bonne pratique VLSM
 
 | Interface | Type | IP | Masque | Connecté à |
 |---|---|---|---|---|
-| Fa0/0 | LAN | 192.168.2.126 | /26 | Switch S6 (LAN Toulouse) |
+| Fa0/0 | LAN | 192.168.2.126 | /26 | Switch S4 (LAN Toulouse) |
 | Se2/0 | WAN | 192.168.3.18 | /30 | R5 (WAN) |
 
 ---
@@ -87,10 +87,10 @@ Les sous-réseaux sont alloués du plus grand au plus petit (bonne pratique VLSM
 
 | PC | Site | IP | Masque | Passerelle |
 |---|---|---|---|---|
-| PC1 | Paris | DHCP | /23 | 192.168.1.254 |
+| PC0-1 | Paris | DHCP | /23 | 192.168.1.254 |
 | PC2 | Nantes | 192.168.2.129 | /26 | 192.168.2.190 |
 | PC3 | Strasbourg | 192.168.2.193 | /26 | 192.168.2.254 |
 | PC4 | Marseille | 192.168.2.1 | /26 | 192.168.2.62 |
 | PC5 | Toulouse | 192.168.2.65 | /26 | 192.168.2.126 |
 
-> ℹ️ PC1 (Paris) reçoit son IP automatiquement via le serveur DHCP configuré sur R1. Les autres PCs sont configurés en IP statique.
+> PC0 et PC1 (Paris) reçoivent IP automatiquement via le serveur DHCP configuré sur R1. Les autres PCs sont configurés en IP statique.
