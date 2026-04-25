@@ -13,6 +13,8 @@
 | R5 | Cisco PT Router | WAN | Routeur intermédiaire | 2 |
 | R6 | Cisco PT Router | Toulouse | Agence Ouest | 2 |
 
+- R5 est un routeur intermédiaire simulant un backbone opérateur
+
 ### Switches
 
 | Nom | Modèle | Site |
