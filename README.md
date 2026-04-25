@@ -2,6 +2,8 @@
 
 > Simulation d'un réseau WAN d'entreprise multi-sites réalisée sur **Cisco Packet Tracer**.  
 > Ce projet couvre la conception physique, le plan d'adressage, la configuration des équipements, le routage statique et les tests de connectivité.
+>
+> /!\ Ce projet est une simulation Cisco Packet Tracer visant à reproduire un WAN simplifié. Certaines technologies opérateur (MPLS, BGP, Metro Ethernet réel) ne sont pas implémentées. /!\ 
 
 ---
 
@@ -79,3 +81,10 @@ Concevoir et configurer un réseau d’entreprise multi-sites comprenant :
 - Sécurisation des accès distants via SSH (RSA 2048 bits)
 - Routage statique inter-sites
 - Tests de connectivité et traçage de routes (ping / tracert)
+
+## Evolutions possibles
+
+- Remplacement routage statique par OSPF
+- Ajout VPN Ipsec
+- Simulation MPLS
+- Simulation VLAN inter-sites
